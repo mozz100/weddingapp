@@ -10,5 +10,8 @@
  *
  *= require_self
  *= require bootstrap_and_overrides
+ *= require sticky_footer
  *= require_tree .
  */
+
+#content { padding-top: 2em; }

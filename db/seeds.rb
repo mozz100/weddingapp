@@ -20,12 +20,6 @@ if Refinery::Page.where(:menu_match => "^/$").empty?
                 :body => "<p>Welcome to our site. This is just a place holder page while we gather our content.</p>",
                 :position => 0
               })
-  home_page.parts.create({
-                :title => "Side Body",
-                :body => "<p>This is another block of content over here.</p>",
-                :position => 1
-              })
-
   home_page_position = -1
   page_not_found_page = home_page.children.create(:title => "Page not found",
               :layout_template => "bootstrap",

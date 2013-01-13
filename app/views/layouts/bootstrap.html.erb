@@ -4,31 +4,19 @@
   <% site_bar = render(:partial => '/refinery/site_bar', :locals => {:head => true}) -%>
   <%= render :partial => '/refinery/head' %>
   <body>
-    <%= site_bar -%>
-    <header id="header">
-      <%= render :partial => '/refinery/header' -%>
-    </header>
-    <div class="container">
-      <div class="content">
-        <div class="row">
-          <div class="span11">
-            <%= yield %>
-          </div>
-          <div class="span1">&nbsp;</div>
-          <div class="span4">
-            <h3>Sidebar</h3>
-            <ul>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div>
-        </div>
-        <footer>
-          <%= render :partial => '/refinery/footer' -%>
-        </footer>
+    <div id="wrap">
+      <%= site_bar -%>
+      <header id="header">
+        <%= render :partial => '/refinery/header' -%>
+      </header>
+      <div class="container" id="content">
+        <%= yield %>
+        <div id="push"></div>
       </div>
     </div>
+    <footer id="footer">
+      <%= render :partial => '/refinery/footer' -%>
+    </footer>
     <%= render :partial => '/refinery/javascripts' %>
   </body>
 </html>
