@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- mozz -->
+<%= render :partial => '/refinery/html_tag' %>
+  <% site_bar = render(:partial => '/refinery/site_bar', :locals => {:head => true}) -%>
+  <%= render :partial => '/refinery/head' %>
+  <body>
+    <div id="wrap">
+      <%= site_bar -%>
+      <header id="header">
+        <%= render :partial => '/refinery/header' -%>
+      </header>
+      <div class="container" id="content">
+        <%= yield %>
+        <div id="push"></div>
+      </div>
+    </div>
+    <footer id="footer">
+      <%= render :partial => '/refinery/footer' -%>
+    </footer>
+    <%= render :partial => '/refinery/javascripts' %>
+  </body>
+</html>
