@@ -1,5 +1,5 @@
 <div class="row">
-  <section id='body_content' class="<%= @page.content_for(:side_body).nil? ? 'span8' : 'span12' %>">
+  <section id='body_content' class="<%= @page.content_for(:side_body).nil? ? 'span12' : 'span8' %>">
     <%=raw @page.content_for(:body) %>
   </section>
   <% unless @page.content_for(:side_body).nil? %>
