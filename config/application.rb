@@ -58,5 +58,17 @@ module Wedding
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+
+initializer 'override-image-magick-paths', :after => 'attach-refinery-images-with-dragonfly' do
+
+Dragonfly[:refinery_images].configure do |c|
+  Dragonfly[:refinery_images].configure_with(:imagemagick)
+  c.convert_command = "/home/mozz/bin/convert"          # defaults to "convert"
+  c.identify_command = "/home/mozz/bin/identify"        # defaults to "identify"
+end
+
+end
+
   end
 end
