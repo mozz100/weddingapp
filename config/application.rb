@@ -11,10 +11,6 @@ end
 
 module Wedding
   class Application < Rails::Application
-    config.before_initialize do
-      config.wedding_name="Wedding Site"
-    end
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
