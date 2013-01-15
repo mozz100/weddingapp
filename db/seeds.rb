@@ -21,6 +21,20 @@ if Refinery::Page.where(:menu_match => "^/$").empty?
                 :position => 0
               })
   home_page_position = -1
+
+  rsvp_page = Refinery::Page.create!({:title => "RSVP",
+              :layout_template => "bootstrap",
+              :deletable => false,
+              :slug => "rsvp",
+              :show_in_menu => true,
+              :menu_match => "^/rsvp$"})
+  rsvp_page.parts.create({
+                :title => "Body",
+                :body => "<p>Enter your RSVP code below to let us know if you can come.</p>",
+                :position => 0
+              })
+  rsvp_page_position = 0
+
   page_not_found_page = home_page.children.create(:title => "Page not found",
               :layout_template => "bootstrap",
               :menu_match => "^/404$",

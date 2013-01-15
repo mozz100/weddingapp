@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113173224) do
+ActiveRecord::Schema.define(:version => 20130115210555) do
+
+  create_table "guests", :force => true do |t|
+    t.string   "rsvp_code"
+    t.string   "fname"
+    t.string   "lname"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"

@@ -1,0 +1,5 @@
+<%= form_tag("/guests/search", :method => :post, :class => 'form-inline') do %>
+  <%= label_tag(:rsvp_code, "Search for:") %>
+  <%= text_field_tag(:rsvp_code, session[:wrong_code]) %>
+  <%= submit_tag("Search") %>
+<% end %>
