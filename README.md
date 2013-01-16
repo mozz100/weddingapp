@@ -43,7 +43,7 @@ Add Twitter Bootstrap overrides in `app/assets/stylesheets/bootstrap_and_overrid
 More control over Javascript, CSS
 ---------------------------------
 
-Inject anything into the <head> tag of any page by creating and then editing `app/views/custom/_head.html.erb`.
+Inject anything into the `<head>` tag of any page by creating and then editing `app/views/custom/_head.html.erb`.
 
 To change the layout completely
 -------------------------------
