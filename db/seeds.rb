@@ -8,6 +8,7 @@
 
 # Added by Refinery CMS Pages extension
 # Refinery::Pages::Engine.load_seed
+
 if Refinery::Page.where(:menu_match => "^/$").empty?
   home_page = Refinery::Page.create!({:title => "Home",
               :layout_template => "bootstrap",
