@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rsvp_code: MyString
+  fname: MyString
+  lname: MyString
+
+two:
+  rsvp_code: MyString
+  fname: MyString
+  lname: MyString
