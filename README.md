@@ -29,24 +29,20 @@ First, look in the file `config/initializers/custom.rb`.  You need to set at lea
 You should also put other configuration in this file, for instance, to send emails, your site will 
 need valid credentials.
 
-To add/edit pages, pictures and things
---------------------------------------
+**To add/edit pages, pictures and things**
 
 Use the Refinery CMS - it lets you do exactly this.  The first time you hit it with your browser, if it's correctly configured, it invites you to 
 create a user.
 
-To change the colour scheme
----------------------------
+**To change the colour scheme**
 
 Add Twitter Bootstrap overrides in `app/assets/stylesheets/bootstrap_and_overrides.less`.
 
-More control over Javascript, CSS
----------------------------------
+**More control over Javascript, CSS**
 
-Inject anything into the `<head>` tag of any page by creating and then editing `app/views/custom/_head.html.erb`.
+Inject anything into the `<head>` tag of every page by creating and then editing `app/views/custom/_head.html.erb`.
 
-To change the layout completely
--------------------------------
+**To change the layout completely**
 
 See `app/views/refinery`.  Beyond that - you've got the source code, knock yourself out!  If you improve
 things, please share your improvements with the community.
