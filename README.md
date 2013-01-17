@@ -10,6 +10,8 @@ or get someone who does know to help you out.
 Once you have it up and running, it contains a CMS (content management system) called
 Refinery, which means you can create pages, edit the text, upload images and so on.
 
+It'll also let you manage RSVPs from your guests.
+
 Getting Started
 ===============
 
@@ -19,7 +21,7 @@ Getting Started
 for the 'production' database
 4. `rake db:create` (if you need to)
 5. `rake db:migrate db:seed`
-6. Read the "Customisation section"
+6. Read the "Customisation" section
 
 
 Customisation
