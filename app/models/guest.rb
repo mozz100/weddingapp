@@ -15,5 +15,6 @@ class Guest < ActiveRecord::Base
         code_length = 6
         self.rsvp_code = (0...code_length).map{ possibilities[rand(possibilities.length)] }.join
     end
+    self.rsvp_code = self.rsvp_code.upcase
   end
 end

@@ -2,4 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  guests:
+    fail_match_rsvp_code: "Couldn't find that RSVP code. Please check and try again."
+    rsvp_succeeded: "Thanks for responding. %{msg}"
+    see_you_there:  "See you there!"
+    sorry_not_coming: "Sorry you can't make it."
