@@ -10,7 +10,9 @@
 # Refinery::Pages::Engine.load_seed
 
 if Refinery::Page.where(:menu_match => "^/$").empty?
-  home_page = Refinery::Page.create!({:title => "Home",
+  config = Rails.application.config
+
+  home_page = Refinery::Page.create!({:title => config.home_page[:title],
               :layout_template => "bootstrap",
               :deletable => false,
               :link_url => "/",
@@ -18,32 +20,32 @@ if Refinery::Page.where(:menu_match => "^/$").empty?
               :menu_match => "^/$"})
   home_page.parts.create({
                 :title => "Body",
-                :body => "<p>Welcome to our site. This is just a place holder page while we gather our content.</p>",
+                :body => config.home_page[:body],
                 :position => 0
               })
   home_page_position = -1
 
-  rsvp_page = Refinery::Page.create!({:title => "RSVP",
+  rsvp_page = Refinery::Page.create!({:title => config.rsvp_page[:title],
               :layout_template => "bootstrap",
               :deletable => false,
-              :slug => "rsvp",
+              :slug => config.rsvp_page[:slug],
               :show_in_menu => true,
-              :menu_match => "^/rsvp$"})
+              :menu_match => "^/" + config.rsvp_page[:slug] + "$"})
   rsvp_page.parts.create({
                 :title => "Body",
-                :body => "<p>Enter your RSVP code below to let us know if you can come.</p>",
+                :body => config.rsvp_page[:body],
                 :position => 0
               })
   rsvp_page_position = 0
 
-  page_not_found_page = home_page.children.create(:title => "Page not found",
+  page_not_found_page = home_page.children.create(:title => config.not_found_page[:title],
               :layout_template => "bootstrap",
               :menu_match => "^/404$",
               :show_in_menu => false,
               :deletable => false)
   page_not_found_page.parts.create({
                 :title => "Body",
-                :body => "<h2>Sorry, there was a problem...</h2><p>The page you requested was not found.</p><p><a href='/'>Return to the home page</a></p>",
+                :body => config.not_found_page[:body],
                 :position => 0
               })
 

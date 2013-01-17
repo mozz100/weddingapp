@@ -1,6 +1,6 @@
 DONE    Test that db:seed creates a home page
 
-TODO    Test that RSVP code is present on rsvp page
+TODO    Test that RSVP form is present on rsvp page
 TODO    Test that submitting the form with invalid details does the right redirects, retains the code input and flashes the correct messages
 TODO    Test that submitting the form with correct details does the right redirect and shows the correct page
 
