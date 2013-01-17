@@ -28,8 +28,8 @@ Customisation
 =============
 
 First, look in the file `config/initializers/custom.rb`.  You need to set at least the name of the whole site.
-You should also put other configuration in this file, for instance, to send emails, your site will 
-need valid credentials.
+You should also put other configuration in this file. For instance, to be able to send emails, your site will 
+almost certainly need valid credentials for an SMTP server.
 
 **To add/edit pages, pictures and things**
 
