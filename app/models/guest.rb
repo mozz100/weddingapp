@@ -13,7 +13,7 @@ class Guest < ActiveRecord::Base
     if rsvp_code.blank?
         possibilities = ["B","C","D","F","G","H","K","L","P","Q","R","T","W","X","Y","2","3","4","6","7","8","9"]
         code_length = 6
-        rsvp_code = (0...code_length).map{ possibilities[rand(possibilities.length)] }.join
+        self.rsvp_code = (0...code_length).map{ possibilities[rand(possibilities.length)] }.join
     end
   end
 end
