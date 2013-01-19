@@ -45,7 +45,7 @@ if Refinery::Page.where(:menu_match => "^/$").empty?
               :deletable => false)
   page_not_found_page.parts.create({
                 :title => "Body",
-                :body => "<p>" + I18n.t('not_fount.body') + "</p><p><a href='/'>" + I18n.t('not_found.return_home') +"</a></p>",
+                :body => "<p>" + I18n.t('not_found.body') + "</p><p><a href='/'>" + I18n.t('not_found.return_home') +"</a></p>",
                 :position => 0
               })
 
