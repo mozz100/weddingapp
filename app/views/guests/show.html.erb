@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container guest_rsvp_form">
   <h3><%= I18n.t('guests.hello', :name => @guest.fname) %></h3>
   <%= form_for @guest, :url => guests_update_path(@guest.rsvp_code), :html => {:class=>"cheese"} do |f| %>
 
-    <p><%= t 'guests.are_you_coming' %></p>
+    <p class="question"><%= t 'guests.are_you_coming' %></p>
     <% [ ['guests.coming',+1], ['guests.not_coming',-1] ].each do |x| %>
       <%= label_tag "status#{x[1]}", :class=> "radio" do %>
           <%= radio_button_tag 'guest[status]', x[1], @guest.status == x[1], :id => "status#{x[1]}" %>
@@ -10,7 +10,18 @@
       <% end %>
     <% end %>
 
-    <%= f.submit t("guests.submit"), :class=>"btn" %>
+    <p class="question"><%= t 'guests.what_food' %></p>
+    <% @foods.each_pair do |key, desc| %>
+      <%= label_tag "food_#{key}", :class=> "radio" do %>
+          <%= radio_button_tag 'data[food]', key, @guest.data[:food] == key, :id => "food_#{key}" %>
+          <%= desc %>
+      <% end %>
+    <% end %>
+
+    <p class="question"><%= t 'guests.any_dietary_reqs' %></p>
+    <%= text_area_tag 'data[notes]', @guest.data[:notes], :rows => 3, :cols => 80 %>
+
+    <p><%= f.submit t("guests.submit", :name => @guest.fname), :class=>"btn" %></p>
 
   <% end %>
 </div>

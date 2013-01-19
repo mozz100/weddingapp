@@ -5,6 +5,13 @@ class Guest < ActiveRecord::Base
 
   before_validation :ensure_rsvp_code
 
+  def data
+    return {
+      :notes => "notes\nwith linebreaks",
+      :food  => "beef"
+    }
+  end
+
   protected
 
   def ensure_rsvp_code
@@ -17,4 +24,5 @@ class Guest < ActiveRecord::Base
     end
     self.rsvp_code = self.rsvp_code.upcase
   end
+
 end
