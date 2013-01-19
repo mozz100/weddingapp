@@ -1,8 +1,8 @@
 <div class="container guest_rsvp_form">
-  <h3><%= I18n.t('guests.hello', :name => @guest.fname) %></h3>
-  <%= form_for @guest, :url => guests_update_path(@guest.rsvp_code), :html => {:class=>"cheese"} do |f| %>
+  <%= t('guests.hello_html', :name => @guest.fname) %>
+  <%= form_for @guest, :url => guests_update_path(@guest.rsvp_code) do |f| %>
 
-    <p class="question"><%= t 'guests.are_you_coming' %></p>
+    <p class="question"><%= t 'guests.are_you_coming_html' %></p>
     <% [ ['guests.coming',+1], ['guests.not_coming',-1] ].each do |x| %>
       <%= label_tag "status#{x[1]}", :class=> "radio" do %>
           <%= radio_button_tag 'guest[status]', x[1], @guest.status == x[1], :id => "status#{x[1]}" %>
@@ -10,16 +10,24 @@
       <% end %>
     <% end %>
 
-    <% @custom_questions.each do |q| %>
-      <p class="question" id="question_<%= q[:key] %>"><%= q[:question_text] %></p>
-      <% q[:options].each_pair do |optslug, desc| %>
-        <%= label_tag "#{q[:key]}_#{optslug}", :class=> "radio #{q[:key]}" do %>
-            <%= radio_button_tag "data[#{q[:key]}]", optslug, @guest.data[q[:key]] == optslug, :id => "#{q[:key]}_#{optslug}" %>
-            <%= desc %>
-        <% end %>
-      <% end %>
+    <div class="custom_questions">
+      <% @custom_questions.each do |q| %>
+        <div class="custom_question" id="question_<%= q[:key] %>">
+          <p class="question"><%=raw q[:question_text] %></p>
+          <%=raw q[:before] %>
+          <% i = 0 %>
+          <% q[:options].each_pair do |optslug, desc| %>
+            <% i += 1 %>
+            <%= label_tag "#{q[:key]}_#{i}", :class=> "radio #{q[:key]}" do %>
+                <%= radio_button_tag "data[#{q[:key]}]", optslug, @guest.data[q[:key]] == optslug, :id => "#{q[:key]}_#{i}" %>
+                <span class="desc"><%= desc %></span>
+            <% end %>
+            <%=raw q[:between] unless i==q[:options].length %>
+          <% end %>
+        </div>
 
-    <% end %>
+      <% end %>
+    </div>
 
 
     <p class="question"><%= t 'guests.notes' %></p>

@@ -15,8 +15,8 @@ en:
     title: "Page not found"
     return_home: "Return to the home page"
   guests:
-    hello: "Hello, %{name}"
-    are_you_coming: "First, please let us know if you can make it.  We hope you can!"
+    hello_html: "<h3>Hello, %{name}</h3>"
+    are_you_coming_html: "First, please let us know if you can make it.<br/>We hope you can!"
     coming: "I’m coming"
     not_coming: "I can’t come"
     submit: "Send RSVP for %{name}"
