@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117230003) do
+ActiveRecord::Schema.define(:version => 20130119023357) do
 
   create_table "guests", :force => true do |t|
     t.string   "rsvp_code"
     t.string   "fname"
     t.string   "lname"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "status",     :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "status",      :default => 0
+    t.text     "stored_data"
   end
 
   create_table "refinery_images", :force => true do |t|

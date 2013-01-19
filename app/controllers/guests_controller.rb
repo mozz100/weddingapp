@@ -13,6 +13,10 @@ class GuestsController < ApplicationController
 
   def update
     @guest.update_attributes(params[:guest])
+
+    @guest.stored_data = params[:data] || {}
+    @guest.save
+
     reset_session
     if @guest.status > 0
      flash[:success] = I18n.t("guests.rsvp_succeeded", :msg => I18n.t("guests.see_you_there"))

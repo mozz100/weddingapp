@@ -2,14 +2,12 @@ class Guest < ActiveRecord::Base
   attr_accessible :fname, :lname, :status
   validates :fname, :lname, :rsvp_code, :presence => true
   validates :rsvp_code, :presence => true
+  serialize :stored_data
 
   before_validation :ensure_rsvp_code
 
   def data
-    return {
-      :notes => "notes\nwith linebreaks",
-      :food  => "beef"
-    }
+    self.stored_data.nil? ? {} : self.stored_data
   end
 
   protected
