@@ -27,3 +27,14 @@ en:
     sorry_not_coming: "Sorry you can’t make it."
     what_food: 
     notes: "Have you any dietary requirements, or is there anything else we need to know?"
+  admin:
+    list_title: "List of guests"
+    name: "Name"
+    status: "Coming?"
+    coming: "Yes"
+    not_coming: "No"
+    notes: "Other info"
+    unknown: "-"
+    rsvp_code: "RSVP code"
+    actions: "Actions"
+    use: "RSVP"

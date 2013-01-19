@@ -2,8 +2,11 @@ class Admin::GuestsController < ApplicationController
 
   before_filter :check_logged_in
 
+  layout "bootstrap"
+
   def index
-    render :text => "OK"
+    @guests = Guest.order('lname')
+    @custom_questions = Wedding::Application.config.custom_questions
   end
 
   protected

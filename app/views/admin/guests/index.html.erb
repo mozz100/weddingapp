@@ -1,2 +1,42 @@
-<h1>Admin::Guests#index</h1>
-<p>Find me in app/views/admin/guests/index.html.erb</p>
+<h3><%= t 'admin.list_title' %></h3>
+<table border=2 cellpadding=6>
+    <tr>
+        <th><%= t 'admin.name' %></th>
+        <th><%= t 'admin.status' %></th>
+        <% @custom_questions.each do |q| %>
+            <th><%= q[:key].titlecase %></th>
+        <% end %>
+        <th><%= t 'admin.notes' %></th>
+        <th><%= t 'admin.rsvp_code' %></th>
+        <th><%= t 'admin.actions' %></th>
+    </tr>
+    <% @guests.each do |guest| %>
+        <tr>
+            <td>
+                <%= guest.fname %>&nbsp;<%= guest.lname %>
+            </td>
+            <td>
+                <% if guest.status == -1 %><%= t 'admin.not_coming' %><% end %>
+                <% if guest.status == 0  %><%= t 'admin.unknown'    %><% end %>
+                <% if guest.status == +1 %><%= t 'admin.coming'     %><% end %>
+            </td>
+            <% @custom_questions.each do |q| %>
+                <td>
+                    <%= guest.data[q[:key]].titlecase %>
+                </td>
+            <% end %>
+            <td>
+                <%= simple_format guest.data[:notes] %>
+            </td>
+            <td>
+                <%= guest.rsvp_code %>
+            </td>
+            <td>
+                <%= form_tag guests_search_path, :class => "form-inline", :style => "display: inline;" do %>
+                    <%= hidden_field_tag :rsvp_code, guest.rsvp_code %>
+                    <%= submit_tag t("admin.use"), :class => "btn btn-small" %>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
