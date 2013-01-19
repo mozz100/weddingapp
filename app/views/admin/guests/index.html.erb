@@ -16,13 +16,14 @@
                 <%= guest.fname %>&nbsp;<%= guest.lname %>
             </td>
             <td>
-                <% if guest.status == -1 %><%= t 'admin.not_coming' %><% end %>
-                <% if guest.status == 0  %><%= t 'admin.unknown'    %><% end %>
-                <% if guest.status == +1 %><%= t 'admin.coming'     %><% end %>
+                <% if    guest.status == -1 %><%= t 'admin.not_coming' %>
+                <% elsif guest.status == +1 %><%= t 'admin.coming'     %>
+                <% else                     %><%= t 'admin.unknown'    %>
+                <% end %>
             </td>
             <% @custom_questions.each do |q| %>
                 <td>
-                    <%= guest.data[q[:key]].titlecase %>
+                    <%= guest.data[q[:key]].try(:titlecase) %>
                 </td>
             <% end %>
             <td>

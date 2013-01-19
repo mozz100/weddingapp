@@ -9,6 +9,12 @@ class Admin::GuestsController < ApplicationController
     @custom_questions = Wedding::Application.config.custom_questions
   end
 
+  def update
+    @guest = Guest.find(params[:id])
+    @guest.update_attributes(params[:guest])
+    redirect_to :action => :index
+  end
+
   protected
 
   def check_logged_in
