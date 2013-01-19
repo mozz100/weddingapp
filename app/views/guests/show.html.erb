@@ -1,7 +1,16 @@
 <div class="container">
-  <h3>Hello, <%= @guest.fname %></h3>
-  <%= form_for @guest, :url => guests_update_path(@guest.rsvp_code) do |f| %>
-    <%= f.text_field :status %>
-    <%= f.submit %>
+  <h3><%= I18n.t('guests.hello', :name => @guest.fname) %></h3>
+  <%= form_for @guest, :url => guests_update_path(@guest.rsvp_code), :html => {:class=>"cheese"} do |f| %>
+
+    <p><%= t 'guests.are_you_coming' %></p>
+    <% [ ['guests.coming',+1], ['guests.not_coming',-1] ].each do |x| %>
+      <%= label_tag "status#{x[1]}", :class=> "radio" do %>
+          <%= radio_button_tag 'guest[status]', x[1], @guest.status == x[1], :id => "status#{x[1]}" %>
+          <%= t x[0] %>
+      <% end %>
+    <% end %>
+
+    <%= f.submit t("guests.submit"), :class=>"btn" %>
+
   <% end %>
 </div>

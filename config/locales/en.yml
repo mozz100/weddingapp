@@ -8,13 +8,20 @@ en:
   rsvp:
     body: "Enter your RSVP code below to let us know if you can come."
     title: "RSVP"
+    your_code: "Your RSVP code"
+    search: "Go"
   not_found:
     body:  "The page you requested was not found."
     title: "Page not found"
     return_home: "Return to the home page"
   guests:
-    fail_match_rsvp_code: "Couldn't find that RSVP code. Please check and try again."
+    hello: "Hello, %{name}"
+    are_you_coming: "First, please let us know if you can make it.  We hope you can!"
+    coming: "I’m coming"
+    not_coming: "I can’t come"
+    submit: "Send RSVP"
+    fail_match_rsvp_code: "Couldn’t find that RSVP code. Please check and try again."
     rsvp_succeeded: "Thanks for responding. %{msg}"
-    rsvp_error: "Sorry, something went wrong and we didn't record a response.  Please check and try again."
+    rsvp_error: "Sorry, something went wrong and we didn’t record a response.  Please check and try again."
     see_you_there:  "See you there!"
-    sorry_not_coming: "Sorry you can't make it."
+    sorry_not_coming: "Sorry you can’t make it."
