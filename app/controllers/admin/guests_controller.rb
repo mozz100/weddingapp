@@ -11,7 +11,22 @@ class Admin::GuestsController < ApplicationController
 
   def update
     @guest = Guest.find(params[:id])
-    @guest.update_attributes(params[:guest])
+    if @guest.update_attributes(params[:guest])
+      redirect_to :action => :index
+    else
+      flash.now[:error] = I18n.t("admin.error")
+      render :action => :edit
+    end
+  end
+
+  def edit
+    @guest = Guest.find(params[:id])
+  end
+
+  def destroy
+    @guest = Guest.find(params[:id])
+    @guest.destroy
+    flash[:success] = I18n.t('admin.deleted')
     redirect_to :action => :index
   end
 

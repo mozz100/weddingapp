@@ -37,6 +37,13 @@
                     <%= hidden_field_tag :rsvp_code, guest.rsvp_code %>
                     <%= submit_tag t("admin.use"), :class => "btn btn-small" %>
                 <% end %>
+                <%= link_to t('admin.edit'), edit_admin_guest_path(guest), :class => "btn btn-small" %>
+                <%= button_to t('admin.delete'), {
+                    :action => :destroy, 
+                    :id => guest.id}, 
+                    :confirm => t('admin.confirm'), 
+                    :method => :delete, 
+                    :class => "btn btn-small" %>
             </td>
         </tr>
     <% end %>
