@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Hello, <%= @guest.fname %></h3>
   <%= form_for @guest, :url => guests_update_path(@guest.rsvp_code) do |f| %>
-    <%= f.text_field :fname %>
+    <%= f.text_field :status %>
     <%= f.submit %>
   <% end %>
 </div>

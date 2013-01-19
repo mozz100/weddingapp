@@ -15,5 +15,6 @@ en:
   guests:
     fail_match_rsvp_code: "Couldn't find that RSVP code. Please check and try again."
     rsvp_succeeded: "Thanks for responding. %{msg}"
+    rsvp_error: "Sorry, something went wrong and we didn't record a response.  Please check and try again."
     see_you_there:  "See you there!"
     sorry_not_coming: "Sorry you can't make it."

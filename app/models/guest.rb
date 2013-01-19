@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  attr_accessible :fname, :lname, :rsvp_code
+  attr_accessible :fname, :lname, :status
   validates :fname, :lname, :rsvp_code, :presence => true
   validates :rsvp_code, :presence => true
 
