@@ -25,5 +25,5 @@ en:
     rsvp_error: "Sorry, something went wrong and we didn’t record a response.  Please check and try again."
     see_you_there:  "See you there!"
     sorry_not_coming: "Sorry you can’t make it."
-    what_food: "Which food option would you like to go for?"
-    any_dietary_reqs: "Have you any dietary requirements, or is there anything else we need to know?"
+    what_food: 
+    notes: "Have you any dietary requirements, or is there anything else we need to know?"

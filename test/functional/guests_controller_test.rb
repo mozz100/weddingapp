@@ -25,4 +25,13 @@ class GuestsControllerTest < ActionController::TestCase
     assert_redirected_to :action => :show, :rsvp_code => guests(:alan).rsvp_code
     assert_equal I18n.t("guests.rsvp_error"), flash[:error]
   end
+
+  test "rsvp with data" do
+    post :update, {
+      :rsvp_code => guests(:alan).rsvp_code,
+      :guest => {:status => -1},
+      :data =>  {:some_key => "some value"}
+    }
+    assert_equal "some value", Guest.find(guests(:alan).id).data[:some_key]
+  end
 end

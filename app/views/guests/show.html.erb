@@ -10,15 +10,19 @@
       <% end %>
     <% end %>
 
-    <p class="question"><%= t 'guests.what_food' %></p>
-    <% @foods.each_pair do |key, desc| %>
-      <%= label_tag "food_#{key}", :class=> "radio" do %>
-          <%= radio_button_tag 'data[food]', key, @guest.data[:food] == key, :id => "food_#{key}" %>
-          <%= desc %>
+    <% @custom_questions.each do |q| %>
+      <p class="question" id="question_<%= q[:key] %>"><%= q[:question_text] %></p>
+      <% q[:options].each_pair do |optslug, desc| %>
+        <%= label_tag "#{q[:key]}_#{optslug}", :class=> "radio #{q[:key]}" do %>
+            <%= radio_button_tag "data[#{q[:key]}]", optslug, @guest.data[q[:key]] == optslug, :id => "#{q[:key]}_#{optslug}" %>
+            <%= desc %>
+        <% end %>
       <% end %>
+
     <% end %>
 
-    <p class="question"><%= t 'guests.any_dietary_reqs' %></p>
+
+    <p class="question"><%= t 'guests.notes' %></p>
     <%= text_area_tag 'data[notes]', @guest.data[:notes], :rows => 3, :cols => 80 %>
 
     <p><%= f.submit t("guests.submit", :name => @guest.fname), :class=>"btn" %></p>

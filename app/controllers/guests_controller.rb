@@ -8,7 +8,7 @@ class GuestsController < ApplicationController
   end
 
   def show
-    @foods = Wedding::Application.config.food_choices
+    @custom_questions = Wedding::Application.config.custom_questions
   end
 
   def update
