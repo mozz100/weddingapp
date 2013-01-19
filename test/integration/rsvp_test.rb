@@ -9,7 +9,7 @@ class RsvpTest < ActionDispatch::IntegrationTest
     # POST upper and lower case versions of rsvp code, ensure both match
     [:downcase, :upcase].each do |m|
       post_via_redirect "/guests/search", {:rsvp_code => guests(:alan).rsvp_code.send(m)}
-      assert_select "h3", I18n.t('guests.hello', :name => guests(:alan).fname)
+      assert_select "h3", "Hello, Alan"
     end
 
     # POST an incorrect code

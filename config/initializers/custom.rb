@@ -5,22 +5,25 @@ module Wedding
       config.custom_questions = [
         {
           :key => "food_starter",
-          :question_text => "Which starter option would you like to go for?",
+          :question_text => "Next, please tell us your food choices.",
           :options => {
-            "soup" => "Vegetable Soup",
-            "melon"  => "Melon"
+            "crab"     => "Portland crab cakes with rocket and chilli dressing",
+            "falafel"  => "Falafel with rocket and chilli dressing"
           },
-          :type => "radio"
+          :type => "radio",
+          :between => "<div class='menu_between'>or</div>",
+          :before => "<div class='menu_before'>Starter</div>"
         },
         {
           :key => "food_main",
-          :question_text => "And for main course?",
+          :question_text => "",
           :options => {
-            "chicken" => "Chicken Cordon Bleu",
-            "beef"    => "Beef Wellington",
-            "veggie"  => "Nut Roast"
+            "beef" => "Fillet of Dorset beef with fresh herbs, garlic and olive oil dressing, baby roast potatoes with shallots and fine beans",
+            "veg"  => "Char-grilled summer vegetable stack with herb dressing"
           },
-          :type => "radio"
+          :type => "radio",
+          :between => "<div class='menu_between'>or</div>",
+          :before => "<div class='menu_before'>Main course</div>"
         },
       ]
     end

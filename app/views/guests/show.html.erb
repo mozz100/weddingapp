@@ -1,14 +1,15 @@
 <div class="container guest_rsvp_form">
   <%= t('guests.hello_html', :name => @guest.fname) %>
   <%= form_for @guest, :url => guests_update_path(@guest.rsvp_code) do |f| %>
-
-    <p class="question"><%= t 'guests.are_you_coming_html' %></p>
-    <% [ ['guests.coming',+1], ['guests.not_coming',-1] ].each do |x| %>
-      <%= label_tag "status#{x[1]}", :class=> "radio" do %>
-          <%= radio_button_tag 'guest[status]', x[1], @guest.status == x[1], :id => "status#{x[1]}" %>
-          <%= t x[0] %>
+    <div class="are_you_coming">
+      <p class="question"><%= t 'guests.are_you_coming_html' %></p>
+      <% [ ['guests.coming',+1], ['guests.not_coming',-1] ].each do |x| %>
+        <%= label_tag "status#{x[1]}", :class=> "radio" do %>
+            <%= radio_button_tag 'guest[status]', x[1], @guest.status == x[1], :id => "status#{x[1]}" %>
+            <%= t x[0] %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
     <div class="custom_questions">
       <% @custom_questions.each do |q| %>
@@ -29,10 +30,11 @@
       <% end %>
     </div>
 
-
-    <p class="question"><%= t 'guests.notes' %></p>
-    <%= text_area_tag 'data[notes]', @guest.data[:notes], :rows => 3, :cols => 80 %>
-
+    <div class="notes">
+      <p class="question"><%= t 'guests.notes' %></p>
+      <%= text_area_tag 'data[notes]', @guest.data[:notes], :rows => 3, :cols => 80 %>
+    </div>
+    
     <p><%= f.submit t("guests.submit", :name => @guest.fname), :class=>"btn" %></p>
 
   <% end %>

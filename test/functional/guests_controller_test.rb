@@ -34,4 +34,5 @@ class GuestsControllerTest < ActionController::TestCase
     }
     assert_equal "some value", Guest.find(guests(:alan).id).data[:some_key]
   end
+
 end
