@@ -9,15 +9,13 @@ class InitialPagesTest < ActionDispatch::IntegrationTest
     get "/"
     assert_response :success
     # <title> should be "Home - (whatever's configured)"
-    assert_select "title", html_escape("#{config.home_page[:title]} - #{config.wedding_name}")
-
-    get "/" + config.rsvp_page[:slug]
-    assert_response :success
-    assert_select "title", html_escape("#{config.rsvp_page[:title]} - #{config.wedding_name}")
+    assert_select "title", html_escape("#{I18n.t('home.title')} - #{config.wedding_name}")
   end
 
   test "rsvp form" do
-    get "/" + config.rsvp_page[:slug]
+    get "/rsvp"
+    assert_response :success
+    assert_select "title", html_escape("#{I18n.t('rsvp.title')} - #{config.wedding_name}")
     assert css_select("section#rsvp_form")
   end
 end

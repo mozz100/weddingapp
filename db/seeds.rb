@@ -12,7 +12,7 @@
 if Refinery::Page.where(:menu_match => "^/$").empty?
   config = Rails.application.config
 
-  home_page = Refinery::Page.create!({:title => config.home_page[:title],
+  home_page = Refinery::Page.create!({:title => I18n.t('home.title'),
               :layout_template => "bootstrap",
               :deletable => false,
               :link_url => "/",
@@ -20,32 +20,32 @@ if Refinery::Page.where(:menu_match => "^/$").empty?
               :menu_match => "^/$"})
   home_page.parts.create({
                 :title => "Body",
-                :body => config.home_page[:body],
+                :body => "<p>" + I18n.t('home.body') + "</p>",
                 :position => 0
               })
   home_page_position = -1
 
-  rsvp_page = Refinery::Page.create!({:title => config.rsvp_page[:title],
+  rsvp_page = Refinery::Page.create!({:title => I18n.t('rsvp.title'),
               :layout_template => "bootstrap",
               :deletable => false,
-              :slug => config.rsvp_page[:slug],
+              :slug => :rsvp,
               :show_in_menu => true,
-              :menu_match => "^/" + config.rsvp_page[:slug] + "$"})
+              :menu_match => "^/rsvp$"})
   rsvp_page.parts.create({
                 :title => "Body",
-                :body => config.rsvp_page[:body],
+                :body => "<p>" + I18n.t('rsvp.body') + "</p>",
                 :position => 0
               })
   rsvp_page_position = 0
 
-  page_not_found_page = home_page.children.create(:title => config.not_found_page[:title],
+  page_not_found_page = home_page.children.create(:title => I18n.t('not_found.title'),
               :layout_template => "bootstrap",
               :menu_match => "^/404$",
               :show_in_menu => false,
               :deletable => false)
   page_not_found_page.parts.create({
                 :title => "Body",
-                :body => config.not_found_page[:body],
+                :body => "<p>" + I18n.t('not_fount.body') + "</p><p><a href='/'>" + I18n.t('not_found.return_home') +"</a></p>",
                 :position => 0
               })
 

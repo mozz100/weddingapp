@@ -2,6 +2,16 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  home:
+    body: "Welcome to our site. This is just a place holder page while we gather our content."
+    title: "Home"
+  rsvp:
+    body: "Enter your RSVP code below to let us know if you can come."
+    title: "RSVP"
+  not_found:
+    body:  "The page you requested was not found."
+    title: "Page not found"
+    return_home: "Return to the home page"
   guests:
     fail_match_rsvp_code: "Couldn't find that RSVP code. Please check and try again."
     rsvp_succeeded: "Thanks for responding. %{msg}"

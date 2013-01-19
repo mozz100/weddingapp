@@ -15,7 +15,7 @@ class RsvpTest < ActionDispatch::IntegrationTest
     # POST an incorrect code
     code = "HJKL1"
     assert_not_equal code, guests(:alan).rsvp_code
-    post_via_redirect "/guests/search", {:rsvp_code => code}, {"HTTP_REFERER" => "/" + config.rsvp_page[:slug]}
+    post_via_redirect "/guests/search", {:rsvp_code => code}, {"HTTP_REFERER" => "/rsvp"}
 
     # assert not on guest page
     assert_equal 0, css_select("h3").length
