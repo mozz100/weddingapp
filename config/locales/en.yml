@@ -17,7 +17,7 @@ en:
     return_home: "Return to the home page"
   guests:
     hello_html: "<h3>Hello, %{name}</h3>"
-    are_you_coming_html: "First, please let us know if you can make it.<br/>We hope you can!"
+    are_you_coming_html: "Please let us know if you can make it.<br/>We hope you can!"
     coming: "I’m coming"
     not_coming: "I can’t come"
     submit: "Send RSVP for %{name}"
@@ -28,7 +28,8 @@ en:
     sorry_not_coming: "Sorry you can’t make it."
     what_food: 
     anyone_else: "Remember to RSVP for each person on your invite: it’ll really help us keep track of numbers."
-    notes: "Have you any dietary requirements, or is there anything else we need to know?"
+    notes: "You can send us a message with your RSVP too:"
+    notes_coming: "Have you any dietary requirements, or is there anything else we need to know?"
   admin:
     list_title: "List of guests"
     name: "Name"

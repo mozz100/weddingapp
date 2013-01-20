@@ -1,3 +1,8 @@
+<script>
+    var notes_coming = "<%= t 'guests.notes_coming' %>";
+    var notes = "<%= t 'guests.notes' %>";
+</script>
+
 <div class="container guest_rsvp_form">
   <%= t('guests.hello_html', :name => @guest.fname) %>
   <%= form_for @guest, :url => guests_update_path(@guest.rsvp_code) do |f| %>

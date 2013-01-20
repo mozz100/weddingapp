@@ -5,7 +5,7 @@ module Wedding
       config.custom_questions = [
         {
           :key => "food_starter",
-          :question_text => "Next, please tell us your food choices.",
+          :question_text => "Please tell us your food choices.",
           :options => {
             "crab"     => "Portland crab cakes with rocket and chilli dressing",
             "falafel"  => "Falafel with rocket and chilli dressing"
