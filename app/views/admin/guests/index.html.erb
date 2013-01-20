@@ -48,3 +48,12 @@
         </tr>
     <% end %>
 </table>
+
+<h3><%= t 'admin.add_guests' %></h3>
+<p><%= t 'admin.add_guests_instructions' %></p>
+<%= form_tag :action => :index do %>
+    <div>
+        <%= text_area_tag :names_list, session[:names_list], {:rows => 6, :cols => 40, :style => "width: auto;", :placeholder => "John Smith"} %>
+    </div>
+    <%= submit_tag t('admin.add_guests'), :class => "btn" %>
+<% end %>

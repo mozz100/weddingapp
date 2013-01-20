@@ -17,6 +17,8 @@ class Admin::GuestsControllerTest < ActionController::TestCase
     assert_redirected_to "/refinery/login"
     delete :destroy, :id => @alan.id
     assert_redirected_to "/refinery/login"
+    post :create, {:names_list => "Dave Dobbler\nEddie Evans\n"}
+    assert_redirected_to "/refinery/login"
   end
 
   test "get pages ok with login" do
@@ -36,9 +38,17 @@ class Admin::GuestsControllerTest < ActionController::TestCase
   end
 
   test "delete a guest" do
+    sign_in :refinery_user, @user
     assert_difference 'Guest.count', -1 do
-      sign_in :refinery_user, @user
       delete :destroy, {:id => @alan.id}
+      assert_redirected_to admin_guests_path
+    end
+  end
+
+  test "create guests" do
+    sign_in :refinery_user, @user
+    assert_difference 'Guest.count', +2 do
+      post :create, {:names_list => "Dave Dobbler\nEddie Evans\n"}
       assert_redirected_to admin_guests_path
     end
   end

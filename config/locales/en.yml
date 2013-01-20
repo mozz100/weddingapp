@@ -47,3 +47,7 @@ en:
     delete: "Delete"
     confirm: "Are you sure?"
     deleted: "Guest deleted."
+    add_guests: "Add guests"
+    add_guests_instructions: "Enter guests’ names, one on each line.  Make sure they all have a first name and a surname, separated by a space."
+    add_guests_fail: "Failed adding guests.  Make sure they all have a first name and a surname, separated by a space."
+    added_guests: "%{n} guests added."

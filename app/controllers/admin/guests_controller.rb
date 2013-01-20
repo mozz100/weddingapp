@@ -5,7 +5,7 @@ class Admin::GuestsController < ApplicationController
   layout "bootstrap"
 
   def index
-    @guests = Guest.order('lname')
+    @guests = Guest.order('UPPER(lname)')
     @custom_questions = Wedding::Application.config.custom_questions
   end
 
@@ -27,6 +27,33 @@ class Admin::GuestsController < ApplicationController
     @guest = Guest.find(params[:id])
     @guest.destroy
     flash[:success] = I18n.t('admin.deleted')
+    redirect_to :action => :index
+  end
+
+  def create
+    begin
+      names = params[:names_list].split("\n")
+      @new_guests = []
+      names.each do |name|
+        unless name.blank?
+          fname = name.split(" ")[0]
+          lname = name.split(" ")[1..-1].join(" ")
+          new_guest = Guest.new :fname => fname, :lname => lname
+          if new_guest.valid?
+            @new_guests << new_guest 
+          else
+            raise I18n.t("admin.add_guests_fail")
+          end
+        end
+      end
+      @new_guests.each{|g| g.save}
+      flash[:success] = I18n.t("admin.added_guests", :n => @new_guests.length)
+      session.delete(:names_list)
+    rescue
+      flash[:error] = $!.to_s
+      session[:names_list] = params[:names_list]
+    end
+
     redirect_to :action => :index
   end
 
