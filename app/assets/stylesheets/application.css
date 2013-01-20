@@ -16,3 +16,13 @@
 
 #content { padding-top: 2em; }
 .guest_rsvp_form p { margin-top: 2em;  }
+
+@media (max-width: 768px) {
+    #site_bar {
+      display: none;
+    }
+}
+
+td.actions {
+    white-space: nowrap;
+}

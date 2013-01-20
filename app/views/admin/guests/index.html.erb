@@ -32,7 +32,7 @@
             <td>
                 <%= guest.rsvp_code %>
             </td>
-            <td>
+            <td class="actions">
                 <%= form_tag guests_search_path, :class => "form-inline", :style => "display: inline;" do %>
                     <%= hidden_field_tag :rsvp_code, guest.rsvp_code %>
                     <%= submit_tag t("admin.use"), :class => "btn btn-small" %>

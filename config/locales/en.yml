@@ -10,6 +10,7 @@ en:
     title: "RSVP"
     your_code: "Your RSVP code"
     search: "Go"
+    already_sent_html: "You’ve already sent an RSVP.<br/>You can change your submission below, but it’s worth giving us a call to make sure we update our plans."
   not_found:
     body:  "The page you requested was not found."
     title: "Page not found"
@@ -26,6 +27,7 @@ en:
     see_you_there:  "See you there!"
     sorry_not_coming: "Sorry you can’t make it."
     what_food: 
+    anyone_else: "Remember to RSVP for each person on your invite: it’ll really help us keep track of numbers."
     notes: "Have you any dietary requirements, or is there anything else we need to know?"
   admin:
     list_title: "List of guests"

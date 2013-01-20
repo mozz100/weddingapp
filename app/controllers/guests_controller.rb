@@ -8,6 +8,9 @@ class GuestsController < ApplicationController
   end
 
   def show
+    if @guest.status != 0 and not @guest.status.nil?
+      flash.now[:notice] = I18n.t "rsvp.already_sent_html"
+    end
     @custom_questions = Wedding::Application.config.custom_questions
   end
 
@@ -22,7 +25,8 @@ class GuestsController < ApplicationController
     session.delete(:rsvp_start)
 
     if @guest.status > 0
-     flash[:success] = I18n.t("guests.rsvp_succeeded", :msg => I18n.t("guests.see_you_there"))
+     flash[:success] =  I18n.t("guests.rsvp_succeeded", :msg => I18n.t("guests.see_you_there"))
+     flash[:success] += "<br/>" + I18n.t("guests.anyone_else")
      redirect_to redirect_dest || "/"
     elsif @guest.status < 0
      flash[:success] = I18n.t("guests.rsvp_succeeded", :msg => I18n.t("guests.sorry_not_coming"))
