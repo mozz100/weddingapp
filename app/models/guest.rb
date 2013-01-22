@@ -10,6 +10,14 @@ class Guest < ActiveRecord::Base
     self.stored_data.nil? ? {} : self.stored_data
   end
 
+  def self.name_from_line(line)
+    str = line.strip.gsub(/[ \t]+/, " ")  # remove leading, trailing whitespace.  Collapse multiple.
+    fname = str.split(" ")[0]
+    lname = str.split(" ")[1..-1].join(" ")
+    lname = nil if lname.empty?
+    return [fname, lname]
+  end
+
   protected
 
   def ensure_rsvp_code

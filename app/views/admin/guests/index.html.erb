@@ -1,7 +1,8 @@
 <h3><%= t 'admin.list_title' %></h3>
 <table border=2 cellpadding=6>
     <tr>
-        <th><%= t 'admin.name' %></th>
+        <th><%= t 'admin.fname' %></th>
+        <th><%= t 'admin.lname' %></th>
         <th><%= t 'admin.status' %></th>
         <% @custom_questions.each do |q| %>
             <th><%= q[:key].titlecase %></th>
@@ -13,7 +14,10 @@
     <% @guests.each do |guest| %>
         <tr>
             <td>
-                <%= guest.fname %>&nbsp;<%= guest.lname %>
+                <%= guest.fname %>
+            </td>
+            <td>
+                <%= guest.lname %>
             </td>
             <td>
                 <% if    guest.status == -1 %><%= t 'admin.not_coming' %>

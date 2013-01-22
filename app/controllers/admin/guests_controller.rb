@@ -34,10 +34,9 @@ class Admin::GuestsController < ApplicationController
     begin
       names = params[:names_list].split("\n")
       @new_guests = []
-      names.each do |name|
-        unless name.blank?
-          fname = name.split(" ")[0]
-          lname = name.split(" ")[1..-1].join(" ")
+      names.each do |line|
+        unless line.strip.blank?
+          fname, lname = Guest.name_from_line(line)
           new_guest = Guest.new :fname => fname, :lname => lname
           if new_guest.valid?
             @new_guests << new_guest 
