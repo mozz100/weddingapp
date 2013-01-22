@@ -1,6 +1,6 @@
 class Guest < ActiveRecord::Base
   attr_accessible :fname, :lname, :status
-  validates :fname, :lname, :rsvp_code, :presence => true
+  validates :fname, :rsvp_code, :presence => true
   validates :rsvp_code, :presence => true
   serialize :stored_data
 

@@ -2,10 +2,10 @@ require 'test_helper'
 
 class GuestTest < ActiveSupport::TestCase
   test "new guest" do
-    g = Guest.new :fname => "Richard"
+    g = Guest.new
     assert !g.valid?
     assert !g.rsvp_code.blank?
-    g.lname = "Morrison"
+    g.fname = "Richard"
     assert g.valid?
     g.save
     assert_equal 0, g.status
