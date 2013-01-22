@@ -11,7 +11,7 @@ class GuestsControllerTest < ActionController::TestCase
   test "rsvp coming" do
     post :update, {:rsvp_code => guests(:alan).rsvp_code, :guest => {:status => +1}}
     assert_redirected_to "/"
-    assert_equal I18n.t("guests.rsvp_succeeded", :msg => I18n.t("guests.see_you_there")), flash[:success]
+    assert_equal I18n.t("guests.rsvp_succeeded", :msg => I18n.t("guests.see_you_there")) + "<br/>" + I18n.t("guests.anyone_else"), flash[:success]
   end
 
   test "rsvp not coming" do
