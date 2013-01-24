@@ -7,8 +7,8 @@ module Wedding
           :key => "food_starter",
           :question_text => "Please tell us your food choices.",
           :options => {
-            "crab"     => "Portland crab cakes with rocket and chilli dressing",
-            "falafel"  => "Falafel with rocket and chilli dressing"
+            {:key => "crab",    :desc => "Portland crab cakes with rocket and chilli dressing"},
+            {:key => "falafel", :desc => "Falafel with rocket and chilli dressing"}
           },
           :type => "radio",
           :between => "<div class='menu_between'>or</div>",
@@ -18,8 +18,8 @@ module Wedding
           :key => "food_main",
           :question_text => "",
           :options => {
-            "beef" => "Fillet of Dorset beef with fresh herbs, garlic and olive oil dressing, baby roast potatoes with shallots and fine beans",
-            "veg"  => "Char-grilled summer vegetable stack with herb dressing"
+            {:key => "beef", :desc  => "Fillet of Dorset beef with fresh herbs, garlic and olive oil dressing, baby roast potatoes with shallots and fine beans"},
+            {:key => "veg",  :desc  => "Char-grilled summer vegetable stack with herb dressing"}
           },
           :type => "radio",
           :between => "<div class='menu_between'>or</div>",

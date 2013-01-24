@@ -22,11 +22,11 @@
           <p class="question"><%=raw q[:question_text] %></p>
           <%=raw q[:before] %>
           <% i = 0 %>
-          <% q[:options].each_pair do |optslug, desc| %>
+          <% q[:options].each do |opt| %>
             <% i += 1 %>
             <%= label_tag "#{q[:key]}_#{i}", :class=> "radio #{q[:key]}" do %>
-                <%= radio_button_tag "data[#{q[:key]}]", optslug, @guest.data[q[:key]] == optslug, :id => "#{q[:key]}_#{i}" %>
-                <span class="desc"><%= desc %></span>
+                <%= radio_button_tag "data[#{q[:key]}]", opt[:key], @guest.data[q[:key]] == opt[:key], :id => "#{q[:key]}_#{i}" %>
+                <span class="desc"><%= opt[:desc] %></span>
             <% end %>
             <%=raw q[:between] unless i==q[:options].length %>
           <% end %>
