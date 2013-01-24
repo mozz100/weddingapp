@@ -23,7 +23,6 @@ if Refinery::Page.where(:menu_match => "^/$").empty?
                 :body => "<p>" + I18n.t('home.body') + "</p>",
                 :position => 0
               })
-  home_page_position = -1
 
   rsvp_page = Refinery::Page.create!({:title => I18n.t('rsvp.title'),
               :layout_template => "bootstrap",
@@ -36,7 +35,18 @@ if Refinery::Page.where(:menu_match => "^/$").empty?
                 :body => "<p>" + I18n.t('rsvp.body') + "</p>",
                 :position => 0
               })
-  rsvp_page_position = 0
+
+  dir_page = Refinery::Page.create!({:title => I18n.t('directions.title'),
+              :layout_template => "bootstrap",
+              :deletable => true,
+              :slug => :directions,
+              :show_in_menu => true,
+              :menu_match => "^/directions$"})
+  dir_page.parts.create({
+                :title => "Body",
+                :body => "<p>" + I18n.t('directions.body') + "</p>",
+                :position => 0
+              })
 
   page_not_found_page = home_page.children.create(:title => I18n.t('not_found.title'),
               :layout_template => "bootstrap",

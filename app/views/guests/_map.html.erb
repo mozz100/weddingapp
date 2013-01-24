@@ -1,0 +1,40 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDJRpYkroNcRS0twrySMIw_FZUDmSvh6u4&sensor=false' %>
+  <%= javascript_tag do %>
+    $(function() {
+      var wedding_location = new google.maps.LatLng(<%= @location.join(",") %>);
+      var styles = [
+      {
+        "stylers": <%=raw @map_stylers.to_json %>
+      }
+      ];
+
+      var mapOptions = {
+        center: wedding_location,
+        zoom: <%= @zoom_level %>,
+        disableDefaultUI: true,
+        zoomControl: true,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.SMALL
+        },
+        panControl: true,
+        panControlOptions: {
+          position: google.maps.ControlPosition.TOP_RIGHT
+        },
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map_canvas"),
+        mapOptions);
+      map.setOptions({styles: styles});
+
+
+      var marker = new google.maps.Marker({
+        position: wedding_location,
+        title:"<%= @location_name %>",
+        map: map,
+        icon: '<%= @map_pin_icon %>'
+      });
+    });
+  <% end %>
+<% end %>
+<div id="map_canvas"></div>

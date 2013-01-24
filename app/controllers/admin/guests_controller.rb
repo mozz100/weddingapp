@@ -7,6 +7,17 @@ class Admin::GuestsController < ApplicationController
   def index
     @guests = Guest.order('UPPER(lname)')
     @custom_questions = Wedding::Application.config.custom_questions
+
+    # compile stats
+    @coming     = @guests.where('status > 0')
+    @not_coming = @guests.where('status < 0')
+    @no_rsvp    = @guests.where(:status => [0,nil])
+
+    @custom_questions.each do |q|
+      q[:options].each do |opt|
+        opt[:number_guests] = @coming.select{|guest| guest.data[q[:key]] == opt[:key]}.length
+      end
+    end
   end
 
   def update
