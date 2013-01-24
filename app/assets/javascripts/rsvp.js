@@ -3,24 +3,28 @@ $(function() {
         return $('input:radio[name="guest[status]"]:checked').val() == 1;
     }
 
-    function set_visibility_based_on_rsvp() {
+    function set_visibility_based_on_rsvp(animate) {
         if (guest_is_coming()) {
             $('.notes .question').text(notes_coming);
-            $('.custom_questions').slideDown();
+            if (animate) {
+                $('.custom_questions').slideDown();
+            } else {
+                $('.custom_questions').show();
+            }
         } else {
             $('.notes .question').text(notes);
-            $('.custom_questions').slideUp();
+            if (animate) {
+                $('.custom_questions').slideUp();
+            } else {
+                $('.custom_questions').hide();
+            }
         }
     }
 
     // start up behaviour
-    if (!guest_is_coming()) {
-        $('.custom_questions').hide();
-    } else {
-        // do nothing
-    }
+    set_visibility_based_on_rsvp(false);
     
     $('.are_you_coming .radio').click(function() {
-        set_visibility_based_on_rsvp();
+        set_visibility_based_on_rsvp(true);
     });
 })

@@ -30,6 +30,7 @@ en:
     anyone_else: "Remember to RSVP for each person on your invite: it’ll really help us keep track of numbers."
     notes: "You can send us a message with your RSVP too:"
     notes_coming: "Have you any dietary requirements, or is there anything else we need to know?"
+    missing_data_html: "Please answer every question, and pick an option for every course.<br/>If you want to skip a course, let us know in the Notes/Dietary requirements box."
   admin:
     list_title: "List of guests"
     name: "Name"

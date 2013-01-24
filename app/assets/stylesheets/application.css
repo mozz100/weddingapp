@@ -16,6 +16,11 @@
 
 #content { padding-top: 2em; }
 .guest_rsvp_form p { margin-top: 2em;  }
+.custom_question.missing_answer {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
 
 @media (max-width: 768px) {
     #site_bar {

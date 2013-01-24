@@ -18,7 +18,7 @@
 
     <div class="custom_questions">
       <% @custom_questions.each do |q| %>
-        <div class="custom_question" id="question_<%= q[:key] %>">
+        <div class="custom_question <%= 'missing_answer' if session[:missing_data].try {|d| d.include? q[:key] } %>" id="question_<%= q[:key] %>">
           <p class="question"><%=raw q[:question_text] %></p>
           <%=raw q[:before] %>
           <% i = 0 %>

@@ -26,4 +26,44 @@ class RsvpTest < ActionDispatch::IntegrationTest
     # assert code retained as entered, for user to check and correct
     assert_equal 1, css_select("input#rsvp_code[value='"+code+"']").length
   end
+
+  test "positive rsvp" do
+    post_via_redirect "/guests/search", {:rsvp_code => guests(:alan).rsvp_code}
+    assert_select "h3", "Hello, Alan"
+
+    # Alan forgets to answer custom questions
+    put_via_redirect "/guests/#{guests(:alan).rsvp_code}", {
+      :guest => {:status => 1},
+      :data => {}
+    }
+    assert_select "h3", "Hello, Alan"
+    assert_match  'flash_error', @response.body
+
+    # choose food this time
+    data_to_post = {}
+    Wedding::Application.config.custom_questions.each do |q|
+      data_to_post[q[:key]] = "some data"
+    end
+    put_via_redirect "/guests/#{guests(:alan).rsvp_code}", {
+      :guest => {:status => 1},
+      :data => data_to_post
+    }, {"HTTP_REFERER" => "/rsvp"}
+
+    assert_match 'flash_success', @response.body
+
+  end
+
+   test "negative rsvp" do
+    post_via_redirect "/guests/search", {:rsvp_code => guests(:alan).rsvp_code}
+    assert_select "h3", "Hello, Alan"
+
+    data_to_post = {}
+    put_via_redirect "/guests/#{guests(:alan).rsvp_code}", {
+      :guest => {:status => -1},
+      :data => data_to_post
+    }, {"HTTP_REFERER" => "/rsvp"}
+
+    assert_match 'flash_success', @response.body
+
+  end
 end

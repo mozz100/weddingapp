@@ -10,6 +10,18 @@ class GuestsControllerTest < ActionController::TestCase
 
   test "rsvp coming" do
     post :update, {:rsvp_code => guests(:alan).rsvp_code, :guest => {:status => +1}}
+    assert_redirected_to :action => :show
+    assert_equal I18n.t("guests.missing_data_html"), flash[:error]
+    data_to_post = {}
+    Wedding::Application.config.custom_questions.each do |q|
+      data_to_post[q[:key]] = "some data"
+    end
+    post :update, {:rsvp_code => guests(:alan).rsvp_code,
+      :guest => {
+        :status => +1
+      }, 
+      :data => data_to_post
+    }
     assert_redirected_to "/"
     assert_equal I18n.t("guests.rsvp_succeeded", :msg => I18n.t("guests.see_you_there")) + "<br/>" + I18n.t("guests.anyone_else"), flash[:success]
   end
@@ -26,7 +38,7 @@ class GuestsControllerTest < ActionController::TestCase
     assert_equal I18n.t("guests.rsvp_error"), flash[:error]
   end
 
-  test "rsvp with data" do
+  test "rsvp with random data" do
     post :update, {
       :rsvp_code => guests(:alan).rsvp_code,
       :guest => {:status => -1},
