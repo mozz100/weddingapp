@@ -14,7 +14,7 @@ class Admin::GuestsController < ApplicationController
     @no_rsvp    = @guests.where(:status => [0,nil])
 
     @custom_questions.each do |q|
-      q.options each do |opt|
+      q[:options].each do |opt|
         opt[:number_guests] = @coming.select{|guest| guest.data[q[:key]] == opt[:key]}.length
       end
     end
