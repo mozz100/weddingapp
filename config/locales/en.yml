@@ -15,6 +15,9 @@ en:
     body:  "The page you requested was not found."
     title: "Page not found"
     return_home: "Return to the home page"
+  directions:
+    title: "Directions"
+    body: "Directions to the venue go here."
   guests:
     hello_html: "<h3>Hello, %{name}</h3>"
     are_you_coming_html: "Please let us know if you can make it.<br/>We hope you can!"

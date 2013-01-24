@@ -9,9 +9,16 @@
   <% end %>
 </div>
 <% unless @rsvp_form.nil? %>
-<div class="row">
-  <section id='rsvp_form' class='span12'>
-    <%=render :partial => 'guests/rsvp_form' %>
-  </section>
-</div>
+  <div class="row">
+    <section id='rsvp_form' class='span12'>
+      <%=render :partial => 'guests/rsvp_form' %>
+    </section>
+  </div>
+<% end %>
+<% unless @map.nil? %>
+  <div class="row">
+    <section id='map' class='span12'>
+      <%=render :partial => 'guests/map' %>
+    </section>
+  </div>
 <% end %>

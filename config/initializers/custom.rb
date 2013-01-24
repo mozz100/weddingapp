@@ -26,6 +26,11 @@ module Wedding
           :before => "<div class='menu_before'>Main course</div>"
         },
       ]
+      config.wedding_location_name = "Brympton House"
+      config.wedding_location = [50.936254, -2.684819]
+      config.map_zoom_level = 14
+      config.map_pin_icon = "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"
+      config.map_stylers = [{ "hue" => "#000025"}, {"saturation" => -50 }]
     end
   end
 end
