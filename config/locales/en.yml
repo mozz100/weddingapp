@@ -39,6 +39,7 @@ en:
     name: "Name"
     status: "Coming?"
     coming: "Yes"
+    no_rsvp: "No response yet"
     not_coming: "No"
     notes: "Other info"
     unknown: "-"
@@ -58,3 +59,8 @@ en:
     add_guests_instructions: "Enter guests’ names, one on each line.  Make sure they all have a first name and a surname, separated by a space."
     add_guests_fail: "Failed adding guests.  Make sure they all have a first name and a surname, separated by a space."
     added_guests: "%{n} guests added."
+    stats:
+      title: "Your numbers"
+      coming: "Attendee numbers"
+      custom_questions: "Choices"
+      custom_questions_explain: "The table above only counts guests who’ve said they are coming."

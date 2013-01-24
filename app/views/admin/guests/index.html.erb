@@ -1,3 +1,48 @@
+<h3><%= t 'admin.stats.title' %></h3>
+<div class="row">
+    <div class="span6[:optio">
+        <h4><%= t 'admin.stats.coming' %></h4>
+        <table border=2 cellpadding=6>
+            <tr>
+                <th><%= t 'admin.coming' %></th>
+                <td><%= @coming.count %></td>
+            </tr>
+            <tr>
+                <th><%= t 'admin.not_coming' %></th>
+                <td><%= @not_coming.count %></td>
+            </tr>
+            <tr>
+                <th><%= t 'admin.no_rsvp' %></th>
+                <td><%= @no_rsvp.count %></td>
+            </tr>
+        </table>
+    </div>
+    <div class="span6">
+        <h4><%= t 'admin.stats.custom_questions' %></h4>
+        <table border=2 cellpadding=6>
+            <% @custom_questions.each do |question| %>
+                <tr>
+                    <th><%= question[:key].titlecase %></th>
+                    <td>
+                        <table border=2 cellpadding=2>
+                            <% question[:options].each do |option| %>
+                                <tr>
+                                    <td>
+                                        <%= option[:key].titlecase %>
+                                    </td>
+                                    <td>
+                                        <%= option[:number_guests] %>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </table>
+                    </td>
+                </tr>
+            <% end %>
+        </table>
+        <p><%= t 'admin.stats.custom_questions_explain' %></p>
+    </div>
+</div>
 <h3><%= t 'admin.list_title' %></h3>
 <table border=2 cellpadding=6>
     <tr>
