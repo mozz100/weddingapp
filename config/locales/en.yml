@@ -65,3 +65,10 @@ en:
       custom_questions: "Choices"
   export:
     retrieved: "Retrieved at:"
+    spreadsheet_export: "Download your data"
+    spreadsheet_formats: "You can download in two different formats:"
+    for_excel: " (tab separated values)"
+    download_tsv: "Download Excel"
+    for_csv: " (comma separated values)"
+    download_csv: "Download CSV"
+    google_explain: "The URL below can be used without needing a login, so keep it secret.  This is useful for syncing to Google Spreadsheets, via the ImportData funtion."

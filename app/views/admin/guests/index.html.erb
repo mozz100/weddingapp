@@ -100,3 +100,26 @@
     </div>
     <%= submit_tag t('admin.add_guests'), :class => "btn" %>
 <% end %>
+
+<h3><%= t 'export.spreadsheet_export' %></h3>
+<p><%= t 'export.spreadsheet_formats' %></p>
+<p>
+    <%= link_to t("export.download_tsv"), export_admin_guests_path(:key => Wedding::Application.config.secret_key, :format => :tsv), {:class => "btn"} %>
+    <%= t 'export.for_excel' %>
+</p>
+<p>
+    <%= link_to t("export.download_csv"), export_admin_guests_path(:key => Wedding::Application.config.secret_key, :format => :csv), {:class => "btn"} %>
+    <%= t 'export.for_csv' %>
+</p>
+<p>
+    <%= t 'export.google_explain' %>
+</p>
+<p>
+    <%= content_tag :pre, :class => "export_url" do export_admin_guests_url(:key => Wedding::Application.config.secret_key, :format => :csv) end %>
+</p>
+
+
+
+
+
+
