@@ -18,9 +18,9 @@ raw(headers.join("\t"))
 <% 
     @guests.each do |g| 
         line = [g.rsvp_code, g.fname, g.lname]
-        if g.status > 0
+        if g.status == 1
             line << t('admin.coming')
-        elsif g.status < 0
+        elsif g.status == -1
             line << t('admin.not_coming')
         else
             line << t('admin.unknown')
