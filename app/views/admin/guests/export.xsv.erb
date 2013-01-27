@@ -1,0 +1,33 @@
+<%=
+    require 'csv'
+    raw(CSV.generate(@options) do |output|
+        output << [t('export.retrieved'), Time.now.in_time_zone('UTC').iso8601().gsub(/[TZ]/, " ")]
+
+        headers = [
+          t('admin.rsvp_code'),
+          t('admin.fname'),
+          t('admin.lname'),
+          t('admin.status'),
+        ]
+        headers += @custom_questions.map{|q| q[:key].titlecase }
+        headers += [
+            t('admin.notes')
+        ]
+        output << headers
+
+        @guests.each do |g| 
+            line = [g.rsvp_code, g.fname, g.lname]
+            if g.status == 1
+                line << t('admin.coming')
+            elsif g.status == -1
+                line << t('admin.not_coming')
+            else
+                line << t('admin.unknown')
+            end
+            line += @custom_questions.map{|q| g.data[q[:key]].try(:titlecase)}
+            line << g.data[:notes].try{|txt| txt.gsub(/\n/, " ")}
+            output << line
+        end
+
+    end)
+%>

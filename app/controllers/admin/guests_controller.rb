@@ -26,9 +26,17 @@ class Admin::GuestsController < ApplicationController
     respond_to do |format|
       format.tsv {
         headers['Content-Disposition'] = "attachment; filename=\"guests.xls\""
+        @options = {:col_sep => "\t"}
+        render :template => "admin/guests/export.xsv.erb"
+      }
+      format.csv {
+        headers['Content-Disposition'] = "attachment; filename=\"guests.csv\""
+        @options = {:col_sep => ","}
+        render :template => "admin/guests/export.xsv.erb"
       }
       format.text {
-        render :template => "admin/guests/export.tsv.erb"
+        @options = {:col_sep => "\t"}
+        render :template => "admin/guests/export.xsv.erb"
       }
 
     end
