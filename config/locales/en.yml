@@ -63,6 +63,5 @@ en:
       title: "Your numbers"
       coming: "Attendee numbers"
       custom_questions: "Choices"
-      custom_questions_explain: "The table above only counts guests who’ve said they are coming."
   export:
     retrieved: "Retrieved at:"
