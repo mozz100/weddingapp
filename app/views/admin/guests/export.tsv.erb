@@ -16,9 +16,15 @@ headers += [
 raw(headers.join("\t"))
 %>
 <% 
-    statuses = ['unknown','coming','not_coming']
     @guests.each do |g| 
-        line = [g.rsvp_code, g.fname, g.lname, t('admin.' + statuses[g.status])]
+        line = [g.rsvp_code, g.fname, g.lname]
+        if g.status > 0
+            line << t 'admin.coming'
+        elsif g.status < 0
+            line << t 'admin.not_coming'
+        else
+            line << t 'admin.unknown'
+        end
         line += @custom_questions.map{|q| g.data[q[:key]].try(:titlecase)}
         line << g.data[:notes].try{|txt| txt.gsub(/\n/, " ")}
 -%>
