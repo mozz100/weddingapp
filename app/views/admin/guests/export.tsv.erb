@@ -1,0 +1,26 @@
+<%= [t('export.retrieved'), Time.now.in_time_zone('UTC').iso8601().gsub(/[TZ]/, " ")].join("\t") %>
+
+<%=
+# headers
+headers = [
+  t('admin.rsvp_code'),
+  t('admin.fname'),
+  t('admin.lname'),
+  t('admin.status'),
+]
+headers += @custom_questions.map{|q| q[:key].titlecase }
+headers += [
+    t('admin.notes')
+]
+
+raw(headers.join("\t"))
+%>
+<% 
+    statuses = ['unknown','coming','not_coming']
+    @guests.each do |g| 
+        line = [g.rsvp_code, g.fname, g.lname, t('admin.' + statuses[g.status])]
+        line += @custom_questions.map{|q| g.data[q[:key]].try(:titlecase)}
+        line << g.data[:notes].try{|txt| txt.gsub(/\n/, " ")}
+-%>
+<%= raw line.join("\t") %>
+<% end -%>

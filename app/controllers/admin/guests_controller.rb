@@ -1,13 +1,11 @@
 class Admin::GuestsController < ApplicationController
 
-  before_filter :check_logged_in
+  before_filter :check_logged_in, :except => :export
+  before_filter :load_lists, :only => [:index, :export]
 
   layout "bootstrap"
 
   def index
-    @guests = Guest.order('UPPER(lname)')
-    @custom_questions = Wedding::Application.config.custom_questions
-
     # compile stats
     @coming     = @guests.where('status > 0')
     @not_coming = @guests.where('status < 0')
@@ -18,6 +16,23 @@ class Admin::GuestsController < ApplicationController
         opt[:number_guests] = @coming.select{|guest| guest.data[q[:key]] == opt[:key]}.length
       end
     end
+  end
+
+  def export
+    if not params[:key] == Wedding::Application.config.secret_key
+      render :text => "Access denied", :status => 403
+      return
+    end
+    respond_to do |format|
+      format.tsv {
+        headers['Content-Disposition'] = "attachment; filename=\"guests.xls\""
+      }
+      format.text {
+        render :template => "admin/guests/export.tsv.erb"
+      }
+
+    end
+
   end
 
   def update
@@ -68,6 +83,11 @@ class Admin::GuestsController < ApplicationController
   end
 
   protected
+
+  def load_lists
+    @guests = Guest.order('UPPER(lname)')
+    @custom_questions = Wedding::Application.config.custom_questions
+  end
 
   def check_logged_in
     unless refinery_user?

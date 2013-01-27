@@ -53,4 +53,14 @@ class Admin::GuestsControllerTest < ActionController::TestCase
     end
   end
 
+  test "csv export access" do
+    sign_out :refinery_user
+    get :export, {:format => :tsv}
+    assert_response 403
+    get :export, {:format => :tsv, :key => "cheese"}
+    assert_response 403
+    get :export, {:format => :tsv, :key => Wedding::Application.config.secret_key }
+    assert_response :success
+  end
+
 end

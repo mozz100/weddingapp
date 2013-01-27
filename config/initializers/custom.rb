@@ -31,6 +31,8 @@ module Wedding
       config.map_zoom_level = 14
       config.map_pin_icon = "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"
       config.map_stylers = [{ "hue" => "#000025"}, {"saturation" => -50 }]
+      config.secret_phrase = "CHANGEME"
+      config.secret_key = Digest::SHA1.hexdigest(config.secret_phrase)
     end
   end
 end

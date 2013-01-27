@@ -6,7 +6,11 @@ Wedding::Application.routes.draw do
   match 'guests/:rsvp_code' => 'guests#update', :via => :put, :as => :guests_update
   match 'guests/:rsvp_code' => 'guests#show',   :via => :get,  :as => :guests_show
   namespace :admin do
-    resources :guests
+    resources :guests do
+      collection do
+        get 'export'
+      end
+    end
   end
 
   # This line mounts Refinery's routes at the root of your application.
