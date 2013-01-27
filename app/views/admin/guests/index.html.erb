@@ -1,7 +1,7 @@
-<h3><%= t 'admin.stats.title' %></h3>
+<h2><%= t 'admin.stats.title' %></h2>
 <div class="row">
     <div class="span6">
-        <h4><%= t 'admin.stats.coming' %></h4>
+        <h3><%= t 'admin.stats.coming' %></h3>
         <table border=2 cellpadding=6>
             <tr>
                 <th><%= t 'admin.coming' %></th>
@@ -18,31 +18,26 @@
         </table>
     </div>
     <div class="span6">
-        <h4><%= t 'admin.stats.custom_questions' %></h4>
-        <table border=2 cellpadding=6>
+        <h3><%= t 'admin.stats.custom_questions' %></h3>
             <% @custom_questions.each do |question| %>
-                <tr>
-                    <th><%= question[:key].titlecase %></th>
-                    <td>
-                        <table border=2 cellpadding=2>
-                            <% question[:options].each do |option| %>
-                                <tr>
-                                    <td>
-                                        <%= option[:key].titlecase %>
-                                    </td>
-                                    <td>
-                                        <%= option[:number_guests] %>
-                                    </td>
-                                </tr>
-                            <% end %>
-                        </table>
-                    </td>
-                </tr>
+                <h4><%= question[:key].titlecase %></h4>
+                <table border=2 cellpadding=6>
+                    <% question[:options].each do |option| %>
+                        <tr>
+                            <td>
+                                <%= option[:key].titlecase %>
+                            </td>
+                            <td>
+                                <%= option[:number_guests] %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </table>
             <% end %>
         </table>
     </div>
 </div>
-<h3><%= t 'admin.list_title' %></h3>
+<h2><%= t 'admin.list_title' %></h2>
 <table border=2 cellpadding=6>
     <tr>
         <th><%= t 'admin.fname' %></th>
