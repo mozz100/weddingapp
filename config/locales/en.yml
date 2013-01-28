@@ -35,7 +35,7 @@ en:
     notes_coming: "Have you any dietary requirements, or is there anything else we need to know?"
     missing_data_html: "Please answer every question, and pick an option for every course.<br/>If you want to skip a course, let us know in the Notes/Dietary requirements box."
   admin:
-    list_title: "List of guests"
+    guest_list: "Guest list"
     name: "Name"
     status: "Coming?"
     coming: "Yes"
