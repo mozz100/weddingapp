@@ -1,0 +1,16 @@
+<%= form_for @guest, :url => admin_guest_path(@guest), :html => {:class => "form-horizontal"} do |f| %>
+    <% [:fname, :lname].each do |fld| %>
+        <div class="control-group">
+            <%= f.label :fname, t("admin.#{fld}"), :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field fld %>
+            </div>
+        </div>
+    <% end %>      
+    <div class="control-group">
+        <div class="controls">
+            <%= f.submit t("admin.save"), :class => "btn" %>
+            <%= link_to "Cancel", admin_guests_path, :class => "btn" %>
+        </div>
+    </div>
+<% end %>

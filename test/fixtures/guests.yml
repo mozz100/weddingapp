@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  rsvp_code: MyString
-  fname: MyString
-  lname: MyString
+alan:
+  rsvp_code: ABCDEF
+  fname: Alan
+  lname: Partridge
 
-two:
-  rsvp_code: MyString
-  fname: MyString
-  lname: MyString
+bob:
+  rsvp_code: 123XYZ
+  fname: Bob
+  lname: Nudd

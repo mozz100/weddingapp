@@ -15,3 +15,31 @@
  */
 
 #content { padding-top: 2em; }
+.guest_rsvp_form p { margin-top: 2em;  }
+.custom_question.missing_answer {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+.export_url {
+  font-size: 60%;
+}
+#map_canvas {
+    height: 600px;
+    width: 100%;
+    max-width: 600px;
+    margin: 2em auto;
+}
+@media (max-width: 600px) {
+  #map_canvas { height: 300px; width: 100%; }
+}
+
+@media (max-width: 768px) {
+    #site_bar {
+      display: none;
+    }
+}
+
+td.actions {
+    white-space: nowrap;
+}

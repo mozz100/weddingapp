@@ -1,0 +1,11 @@
+DONE    Test that db:seed creates a home page
+
+DONE    Test that RSVP form is present on rsvp page
+DONE    Test that submitting the form with invalid details does the right redirects, retains the code input and flashes the correct messages
+DONE    Test that submitting the form with correct details does the right redirect and shows the correct page
+DONE    Test case insensitive rsvp code search
+
+DONE    Test that creating a new guest auto generates an rsvp code
+
+TODO    Test uniqueness constraint for rsvp_code field
+

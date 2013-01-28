@@ -1,0 +1,125 @@
+<h2><%= t 'admin.stats.title' %></h2>
+<div class="row">
+    <div class="span6">
+        <h3><%= t 'admin.stats.coming' %></h3>
+        <table border=2 cellpadding=6>
+            <tr>
+                <th><%= t 'admin.coming' %></th>
+                <td><%= @coming.count %></td>
+            </tr>
+            <tr>
+                <th><%= t 'admin.not_coming' %></th>
+                <td><%= @not_coming.count %></td>
+            </tr>
+            <tr>
+                <th><%= t 'admin.no_rsvp' %></th>
+                <td><%= @no_rsvp.count %></td>
+            </tr>
+        </table>
+    </div>
+    <div class="span6">
+        <h3><%= t 'admin.stats.custom_questions' %></h3>
+            <% @custom_questions.each do |question| %>
+                <h4><%= question[:key].titlecase %></h4>
+                <table border=2 cellpadding=6>
+                    <% question[:options].each do |option| %>
+                        <tr>
+                            <td>
+                                <%= option[:key].titlecase %>
+                            </td>
+                            <td>
+                                <%= option[:number_guests] %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </table>
+            <% end %>
+        </table>
+    </div>
+</div>
+<h2><%= t 'admin.guest_list' %></h2>
+<table border=2 cellpadding=6>
+    <tr>
+        <th><%= t 'admin.fname' %></th>
+        <th><%= t 'admin.lname' %></th>
+        <th><%= t 'admin.status' %></th>
+        <% @custom_questions.each do |q| %>
+            <th><%= q[:key].titlecase %></th>
+        <% end %>
+        <th><%= t 'admin.notes' %></th>
+        <th><%= t 'admin.rsvp_code' %></th>
+        <th><%= t 'admin.actions' %></th>
+    </tr>
+    <% @guests.each do |guest| %>
+        <tr>
+            <td>
+                <%= guest.fname %>
+            </td>
+            <td>
+                <%= guest.lname %>
+            </td>
+            <td>
+                <% if    guest.status == -1 %><%= t 'admin.not_coming' %>
+                <% elsif guest.status == +1 %><%= t 'admin.coming'     %>
+                <% else                     %><%= t 'admin.unknown'    %>
+                <% end %>
+            </td>
+            <% @custom_questions.each do |q| %>
+                <td>
+                    <%= guest.data[q[:key]].try(:titlecase) %>
+                </td>
+            <% end %>
+            <td>
+                <%= simple_format guest.data[:notes] %>
+            </td>
+            <td>
+                <%= guest.rsvp_code %>
+            </td>
+            <td class="actions">
+                <%= form_tag guests_search_path, :class => "form-inline", :style => "display: inline;" do %>
+                    <%= hidden_field_tag :rsvp_code, guest.rsvp_code %>
+                    <%= submit_tag t("admin.use"), :class => "btn btn-small" %>
+                <% end %>
+                <%= link_to t('admin.edit'), edit_admin_guest_path(guest), :class => "btn btn-small" %>
+                <%= button_to t('admin.delete'), {
+                    :action => :destroy, 
+                    :id => guest.id}, 
+                    :confirm => t('admin.confirm'), 
+                    :method => :delete, 
+                    :class => "btn btn-small" %>
+            </td>
+        </tr>
+    <% end %>
+</table>
+
+<h3><%= t 'admin.add_guests' %></h3>
+<p><%= t 'admin.add_guests_instructions' %></p>
+<%= form_tag :action => :index do %>
+    <div>
+        <%= text_area_tag :names_list, session[:names_list], {:rows => 6, :cols => 40, :style => "width: auto;", :placeholder => "John Smith"} %>
+    </div>
+    <%= submit_tag t('admin.add_guests'), :class => "btn" %>
+<% end %>
+
+<h3><%= t 'export.spreadsheet_export' %></h3>
+<p><%= t 'export.spreadsheet_formats' %></p>
+<p>
+    <%= link_to t("export.download_tsv"), export_admin_guests_path(:key => Wedding::Application.config.secret_key, :format => :tsv), {:class => "btn"} %>
+    <%= t 'export.for_excel' %>
+</p>
+<p>
+    <%= link_to t("export.download_csv"), export_admin_guests_path(:key => Wedding::Application.config.secret_key, :format => :csv), {:class => "btn"} %>
+    <%= t 'export.for_csv' %>
+</p>
+<p>
+    <%= t 'export.google_explain' %>
+</p>
+<p>
+    <%= content_tag :pre, :class => "export_url" do export_admin_guests_url(:key => Wedding::Application.config.secret_key, :format => :csv) end %>
+</p>
+
+
+
+
+
+
