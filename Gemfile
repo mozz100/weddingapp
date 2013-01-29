@@ -13,6 +13,7 @@ group :development, :test do
 end
 group :production do
   gem 'pg'
+  gem 'fog'
 end
 group :development do
   gem 'therubyracer'
