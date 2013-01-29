@@ -15,12 +15,12 @@ It'll also let you manage RSVPs from your guests.
 Getting Started
 ===============
 
-1. Clone the source code from github.
+1. Clone the source code from github.  Then run `bundle install`.
 2. Strongly recommended: use Ruby 1.9.3 and rvm
 3. Set up database and edit your copy of `config/databases.yml` - you need to provide details
 for the 'production' database
-4. `rake db:create` (if you need to)
-5. `rake db:migrate db:seed`
+4. `RAILS_ENV=production rake db:create` (if you need to)
+5. `RAILS_ENV=production rake db:migrate db:seed assets:precompile`
 6. Read the "Customisation" section
 
 
