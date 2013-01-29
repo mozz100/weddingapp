@@ -20,7 +20,7 @@ Getting Started
 3. Set up database and edit your copy of `config/databases.yml` - you need to provide details
 for the 'production' database
 4. `RAILS_ENV=production rake db:create` (if you need to)
-5. `RAILS_ENV=production rake db:migrate db:seed`
+5. `RAILS_ENV=production rake db:migrate db:seed assets:precompile`
 6. Read the "Customisation" section
 
 
