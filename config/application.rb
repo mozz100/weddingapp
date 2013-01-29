@@ -56,6 +56,10 @@ module Wedding
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    # Enable post-deploy asset precompilation for heroku
+    # see http://refinerycms.com/guides/heroku
+    config.assets.initialize_on_precompile = true
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
