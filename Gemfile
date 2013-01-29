@@ -15,9 +15,8 @@ group :production do
   gem 'pg'
   gem 'fog'
 end
-group :development do
-  gem 'therubyracer'
-end
+
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
