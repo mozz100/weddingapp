@@ -11,7 +11,7 @@
  *= require_self
  *= require bootstrap_and_overrides
  *= require sticky_footer
- *= require_tree .
+ *= require wymeditor
  */
 
 #content { padding-top: 2em; }

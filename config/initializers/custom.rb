@@ -1,6 +1,14 @@
 module Wedding
   class Application < Rails::Application
+    config.after_initialize do
+      # add rails root to search path.
+      # This means addition of wedding.less followed by rake assets:precompile
+      # enables customization of stylesheets
+      config.less.paths << Rails.root.to_s
+    end
+
     config.before_initialize do
+
       config.wedding_name="Edit config/initializers/custom.rb!"
       config.custom_questions = [
         {
