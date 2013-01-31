@@ -35,8 +35,8 @@ module Wedding
         },
       ]
       config.map_pins = [
-        {:name => "Brympton House",   :location => [50.936254, -2.684819], :icon => "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"},
-        {:name => "Some o'ther \"place\" baby", :location => [50.836254, -2.584819], :icon => "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"}
+        {:name => "Reception at Brympton House",   :location => [50.936254, -2.684819], :icon => "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"},
+        {:name => "Ceremony",                      :location => [50.836254, -2.584819], :icon => "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"}
       ]
       config.map_centre = nil  # compute automatically
       config.map_zoom_level = 14
