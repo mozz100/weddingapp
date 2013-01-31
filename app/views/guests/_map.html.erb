@@ -26,6 +26,9 @@
         mapOptions);
       map.setOptions({styles: styles});
 
+
+      var iw = new google.maps.InfoWindow();
+
       <% @map_pins.each_with_index do |pin, i| %>
         var pin<%=i%> = new google.maps.Marker({
           position: new google.maps.LatLng(<%= pin[:location].join(",") %>),
@@ -33,11 +36,9 @@
           map: map,
           icon: '<%= escape_javascript pin[:icon] %>'
         });
-        var iw<%=i%> = new google.maps.InfoWindow({
-            content: '<%= escape_javascript pin[:name] %>'
-        });
         google.maps.event.addListener(pin<%=i%>, 'click', function() {
-          iw<%=i%>.open(map,pin<%=i%>);
+          iw.setOptions({content: '<%= escape_javascript pin[:name] %>'});
+          iw.open(map,pin<%=i%>);
         });
       <% end %>
     });
