@@ -2,7 +2,6 @@
   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDJRpYkroNcRS0twrySMIw_FZUDmSvh6u4&sensor=false' %>
   <%= javascript_tag do %>
     $(function() {
-      var wedding_location = new google.maps.LatLng(<%= @location.join(",") %>);
       var styles = [
       {
         "stylers": <%=raw @map_stylers.to_json %>
@@ -10,7 +9,7 @@
       ];
 
       var mapOptions = {
-        center: wedding_location,
+        center: new google.maps.LatLng(<%= @map_centre.join(",") %>),
         zoom: <%= @zoom_level %>,
         disableDefaultUI: true,
         zoomControl: true,
@@ -27,14 +26,22 @@
         mapOptions);
       map.setOptions({styles: styles});
 
-
-      var marker = new google.maps.Marker({
-        position: wedding_location,
-        title:"<%= @location_name %>",
-        map: map,
-        icon: '<%= @map_pin_icon %>'
-      });
+      <% @map_pins.each_with_index do |pin, i| %>
+        var pin<%=i%> = new google.maps.Marker({
+          position: new google.maps.LatLng(<%= pin[:location].join(",") %>),
+          title: '<%= escape_javascript pin[:name] %>',
+          map: map,
+          icon: '<%= escape_javascript pin[:icon] %>'
+        });
+        var iw<%=i%> = new google.maps.InfoWindow({
+            content: '<%= escape_javascript pin[:name] %>'
+        });
+        google.maps.event.addListener(pin<%=i%>, 'click', function() {
+          iw<%=i%>.open(map,pin<%=i%>);
+        });
+      <% end %>
     });
   <% end %>
 <% end %>
 <div id="map_canvas"></div>
+<%= @map_centre %>

@@ -34,10 +34,12 @@ module Wedding
           :before => "<div class='menu_before'>Main course</div>"
         },
       ]
-      config.wedding_location_name = "Brympton House"
-      config.wedding_location = [50.936254, -2.684819]
+      config.map_pins = [
+        {:name => "Brympton House",   :location => [50.936254, -2.684819], :icon => "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"},
+        {:name => "Some o'ther \"place\" baby", :location => [50.836254, -2.584819], :icon => "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"}
+      ]
+      config.map_centre = nil  # compute automatically
       config.map_zoom_level = 14
-      config.map_pin_icon = "http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_red.png"
       config.map_stylers = [{ "hue" => "#000025"}, {"saturation" => -50 }]
       config.secret_phrase = "CHANGEME"
       config.secret_key = Digest::SHA1.hexdigest(config.secret_phrase)
