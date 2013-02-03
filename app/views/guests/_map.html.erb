@@ -1,6 +1,7 @@
 <% content_for :javascripts do %>
   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDJRpYkroNcRS0twrySMIw_FZUDmSvh6u4&sensor=false' %>
   <%= javascript_tag do %>
+    var map;
     $(function() {
       var styles = [
       {
@@ -9,7 +10,7 @@
       ];
 
       var mapOptions = {
-        center: new google.maps.LatLng(<%= @map_centre.join(",") %>),
+        center: new google.maps.LatLng(<%= @map_pins[0][:location].join(",") %>),
         zoom: <%= @zoom_level %>,
         disableDefaultUI: true,
         zoomControl: true,
@@ -22,7 +23,7 @@
         },
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      var map = new google.maps.Map(document.getElementById("map_canvas"),
+      map = new google.maps.Map(document.getElementById("map_canvas"),
         mapOptions);
       map.setOptions({styles: styles});
 
@@ -40,9 +41,15 @@
           iw.setOptions({content: '<%= escape_javascript pin[:name] %>'});
           iw.open(map,pin<%=i%>);
         });
+
+      <% end %>
+      <% if @map_pins.length > 1 %>
+        var sw = new google.maps.LatLng(<%= @map_bounds[:sw].join(",") %>);
+        var ne = new google.maps.LatLng(<%= @map_bounds[:ne].join(",") %>);
+        var bounds = new google.maps.LatLngBounds(sw, ne);
+        map.fitBounds(bounds);
       <% end %>
     });
   <% end %>
 <% end %>
 <div id="map_canvas"></div>
-<%= @map_centre %>

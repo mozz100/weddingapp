@@ -13,15 +13,10 @@ Refinery::PagesController.class_eval do
       @zoom_level =    config.map_zoom_level
       @map_stylers =   config.map_stylers
       @map_pins =      config.map_pins
-      if config.map_centre
-        @map_centre = config.map_centre
-      else
-        # naively compute the arithmetic mean of lat and long for all pins
-        @map_centre = [
-          config.map_pins.map{|p| p[:location][0]}.reduce(:+)/config.map_pins.length,
-          config.map_pins.map{|p| p[:location][1]}.reduce(:+)/config.map_pins.length,
-        ]
-      end
+      @map_bounds = {
+        :sw => [@map_pins.map{|p| p[:location][0]}.min, @map_pins.map{|p| p[:location][1]}.min], 
+        :ne => [@map_pins.map{|p| p[:location][0]}.max, @map_pins.map{|p| p[:location][1]}.max], 
+      }
     end
   end
 end
