@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'refinerycms', '~> 2.0.9'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
